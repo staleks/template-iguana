@@ -1,2 +1,2 @@
 # template-iguana
-Java, Spring 3, Hexagonal Showcase
+Java 21, Spring 4, Hexagonal Showcase
