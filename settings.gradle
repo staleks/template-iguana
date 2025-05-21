@@ -10,3 +10,4 @@ rootProject.name = 'template-iguana'
 
 include 'domain'
 include 'test-data'
+include 'service'
