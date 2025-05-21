@@ -1,6 +1,7 @@
 package rs.in.staleks.template.iguana.domain;
 
 import org.junit.jupiter.api.Test;
+import rs.in.staleks.template.iguana.domain.management.User;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;

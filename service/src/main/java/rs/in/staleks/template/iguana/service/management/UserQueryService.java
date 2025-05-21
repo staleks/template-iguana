@@ -1,6 +1,6 @@
-package rs.in.staleks.template.iguana.service;
+package rs.in.staleks.template.iguana.service.management;
 
-import rs.in.staleks.template.iguana.domain.User;
+import rs.in.staleks.template.iguana.domain.management.User;
 
 public class UserQueryService implements UserQuery {
 

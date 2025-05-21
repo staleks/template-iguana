@@ -1,4 +1,4 @@
-package rs.in.staleks.template.iguana.domain;
+package rs.in.staleks.template.iguana.domain.management;
 
 import java.util.Objects;
 

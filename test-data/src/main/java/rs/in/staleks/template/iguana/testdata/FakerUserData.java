@@ -1,7 +1,7 @@
 package rs.in.staleks.template.iguana.testdata;
 
 import com.github.javafaker.Faker;
-import rs.in.staleks.template.iguana.domain.User;
+import rs.in.staleks.template.iguana.domain.management.User;
 
 public class FakerUserData {
 
