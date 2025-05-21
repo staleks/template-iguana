@@ -1,0 +1,12 @@
+plugins {
+    id 'java-library'
+}
+
+dependencies {
+    implementation project(':domain')
+
+    api "org.apache.commons:commons-lang3:${commonsLang3_version}"
+    implementation ("com.github.javafaker:javafaker:${javafaker_version}") {
+        exclude module: 'snakeyaml'
+    }
+}

@@ -1,0 +1,81 @@
+plugins {
+	id 'org.springframework.boot'			version "${springBootPlugin_version}"
+	id 'io.spring.dependency-management'	version "${springDependencyManagementPlugin_version}"
+}
+
+allprojects {
+	group 'rs.in.staleksit.template.iguana'
+	version = rootProject.property("version")
+	repositories {
+		mavenCentral()
+	}
+}
+
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'java-library'
+	apply plugin: 'idea'
+	apply plugin: 'io.spring.dependency-management'
+
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
+
+	compileJava.options.encoding = "UTF-8"
+	compileTestJava.options.encoding = "UTF-8"
+
+	java {
+		toolchain {
+			languageVersion = JavaLanguageVersion.of(21)
+		}
+	}
+
+	repositories {
+		mavenCentral()
+		maven { url 'https://repo.spring.io/milestone' }
+		maven { url 'https://repo.spring.io/snapshot' }
+	}
+
+	dependencyManagement {
+		imports {
+			mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootPlugin_version}"
+			mavenBom "org.springframework.boot:spring-boot-starter-parent:${springBootPlugin_version}"
+			mavenBom "org.junit:junit-bom:${junit_version}"
+		}
+	}
+
+  dependencies {
+	  implementation 'org.springframework:spring-context'
+	  implementation 'io.micrometer:micrometer-registry-prometheus'
+
+	  //~ Testing
+	  testImplementation 'org.springframework:spring-test'
+	  testImplementation "org.mockito:mockito-junit-jupiter:${mockito_version}"
+	  testImplementation 'org.junit.jupiter:junit-jupiter-api'
+	  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+	  testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+  }
+
+  test {
+    useJUnitPlatform()
+
+    testLogging {
+      events "passed", "skipped", "failed"
+    }
+
+    afterSuite { desc, result ->
+      if (!desc.parent) {
+        println "\nTest result: ${result.resultType}"
+        println "Test summary: ${result.testCount} tests, " +
+            "${result.successfulTestCount} succeeded, " +
+            "${result.failedTestCount} failed, " +
+            "${result.skippedTestCount} skipped"
+      }
+    }
+
+  }
+  tasks.withType(Javadoc).configureEach { enabled = false }
+}
+
+wrapper {
+    gradleVersion = '8.14'
+}
