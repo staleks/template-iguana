@@ -11,3 +11,9 @@ rootProject.name = 'template-iguana'
 include 'domain'
 include 'test-data'
 include 'service'
+include 'adapters:persistence'
+include 'adapters:web'
+
+// Set the project directory for modules inside the adapters directory
+project(':adapters:persistence').projectDir = file('adapters/persistence')
+project(':adapters:web').projectDir = file('adapters/web')
