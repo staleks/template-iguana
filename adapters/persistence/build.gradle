@@ -14,7 +14,7 @@ dependencies {
     //~ DB
     implementation("com.h2database:h2:${h2DB_version}")
     implementation "com.zaxxer:HikariCP:${hikariCP_version}"
-
+    implementation "org.liquibase:liquibase-core:${liquibase_version}"
     //~ Mapper
     //~ MapStruct
     implementation "org.mapstruct:mapstruct:${mapStruct_version}"

@@ -6,11 +6,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.hibernate5.HibernateExceptionTranslator;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import rs.in.staleks.template.iguana.adapters.persistence.management.adapter.UserPersistenceAdapter;
+import rs.in.staleks.template.iguana.adapters.persistence.management.repository.JpaUserRepository;
+import rs.in.staleks.template.iguana.service.management.UserPersistencePort;
 
 @Configuration
 @EnableTransactionManagement
-@EntityScan(basePackages = "rs.in.staleksit.template.iguana.persistence.management.model")
-@EnableJpaRepositories(basePackages = "rs.in.staleksit.template.iguana.persistence.management.repository")
+@EntityScan(basePackages = "rs.in.staleks.template.iguana.adapters.persistence.management.model")
+@EnableJpaRepositories(basePackages = "rs.in.staleks.template.iguana.adapters.persistence.management.repository")
 public class PersistenceConfig {
 
     /**
@@ -22,6 +25,11 @@ public class PersistenceConfig {
     @Bean
     HibernateExceptionTranslator hibernateExceptionTranslator() {
         return new HibernateExceptionTranslator();
+    }
+
+    @Bean
+    UserPersistencePort userPersistencePort(final JpaUserRepository jpaUserRepository) {
+        return new UserPersistenceAdapter(jpaUserRepository);
     }
 
 }

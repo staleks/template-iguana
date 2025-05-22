@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="02" author="staleks@gmail.com">
+        <sql>
+            INSERT INTO tbl_user(version,created_by,created_date,last_modified_by,last_modified_date,username,email)
+            VALUES (0, 'admin@gmail.com','2025-05-22 00:00:00.000','admin@gmail.com','2025-05-22 00:00:00.000','staleks','staleks@gmail.com')
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
