@@ -7,9 +7,11 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import rs.in.staleks.template.iguana.domain.management.User;
+import rs.in.staleks.template.iguana.service.error.ResourceNotFoundException;
 import rs.in.staleks.template.iguana.testdata.FakerUserData;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,5 +33,11 @@ class UserQueryServiceTest {
         assertNotNull(user);
     }
 
+    @Test
+    void testGetUserById_notFound() {
+        when(userPersistencePort.getUserById(Mockito.anyLong())).thenThrow(new ResourceNotFoundException("User not found"));
+
+        assertThrows(ResourceNotFoundException.class, () -> userQueryService.getUserById(1L));
+    }
 
 }

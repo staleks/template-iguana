@@ -13,6 +13,7 @@ include 'test-data'
 include 'service'
 include 'adapters:persistence'
 include 'adapters:web'
+include 'app'
 
 // Set the project directory for modules inside the adapters directory
 project(':adapters:persistence').projectDir = file('adapters/persistence')
