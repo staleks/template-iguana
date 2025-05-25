@@ -1,0 +1,12 @@
+jib {
+    from {
+        image = 'amazoncorretto:21'
+    }
+    to {
+        image = 'staleks/template-iguana'
+        tags = ['latest']
+    }
+    container {
+        creationTime = 'USE_CURRENT_TIMESTAMP'
+    }
+}

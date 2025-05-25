@@ -1,4 +1,8 @@
+plugins {
+    id 'com.google.cloud.tools.jib' version "${jibPlugin_version}"
+}
 apply plugin: 'org.springframework.boot'
+apply from: "${rootProject.projectDir}/gradle/jib.gradle"
 
 repositories {
     mavenCentral()
