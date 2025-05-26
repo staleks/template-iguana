@@ -7,7 +7,6 @@ public class User {
     private Long id;
 
     //~ Audit
-    private Long version;
     private String createdBy;
     private Instant createdDate;
     private String lastModifiedBy;
@@ -16,21 +15,24 @@ public class User {
     private String username;
     private String email;
 
+    private Account account;
+
     public User() {
         // empty constructor
     }
 
-    private User(final Long id, final String username, final String email) {
+    private User(final Long id, final String username, final String email, final Account account) {
         this.id = id;
         this.username = username;
         this.email = email;
+        this.account = account;
     }
 
     public String getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(final String createdBy) {
         this.createdBy = createdBy;
     }
 
@@ -38,7 +40,7 @@ public class User {
         return createdDate;
     }
 
-    public void setCreatedDate(Instant createdDate) {
+    public void setCreatedDate(final Instant createdDate) {
         this.createdDate = createdDate;
     }
 
@@ -46,7 +48,7 @@ public class User {
         return lastModifiedBy;
     }
 
-    public void setLastModifiedBy(String lastModifiedBy) {
+    public void setLastModifiedBy(final String lastModifiedBy) {
         this.lastModifiedBy = lastModifiedBy;
     }
 
@@ -54,7 +56,7 @@ public class User {
         return lastModifiedDate;
     }
 
-    public void setLastModifiedDate(Instant lastModifiedDate) {
+    public void setLastModifiedDate(final Instant lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
     }
 
@@ -62,7 +64,7 @@ public class User {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -70,7 +72,7 @@ public class User {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(finalString email) {
         this.email = email;
     }
 
@@ -78,23 +80,31 @@ public class User {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(finalString username) {
         this.username = username;
     }
 
-    public static User of(final Long id, final String username, final String email) {
-        return new User(id, username, email);
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(final Account account) {
+        this.account = account;
+    }
+
+    public static User of(final Long id, final String username, final String email, final Account account) {
+        return new User(id, username, email, account);
     }
 
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof User user)) return false;
-        return Objects.equals(getId(), user.getId()) && Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getEmail(), user.getEmail());
+        return Objects.equals(getId(), user.getId()) && Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getAccount(), user.getAccount());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getUsername(), getEmail());
+        return Objects.hash(getId(), getUsername(), getEmail(), getAccount());
     }
 
     @Override
@@ -103,6 +113,7 @@ public class User {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
+                ", account=" + account +
                 '}';
     }
 }
