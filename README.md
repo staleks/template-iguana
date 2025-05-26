@@ -4,10 +4,16 @@ Java 21, Spring 4, Hexagonal Showcase
 ## Project Overview
 
 **Project Name:** template-iguana
+
 **Version:** 1.0.0
+
 **Description:** Java 21, Spring 4, Hexagonal Showcase
+
 **Author:** Aleksandar Stoisavljevic
+
 **Email:** staleks@gmail.com
+
+**Date:** May 2025.
 
 **Tech Stack:**
 - Java 21
