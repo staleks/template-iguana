@@ -22,6 +22,11 @@ public class Account {
         // empty constructor
     }
 
+    private Account(final String name, final boolean active) {
+        this.name = name;
+        this.active = active;
+    }
+
     private Account(final Long id, final String name, final boolean active, final Set<User> users) {
         this.id = id;
         this.name = name;
@@ -31,6 +36,10 @@ public class Account {
 
     public static Account of(final Long id, final String name, final boolean active, final Set<User> users) {
         return new Account(id, name, active, users);
+    }
+
+    public static Account create(final String name) {
+        return new Account(name, Boolean.TRUE);
     }
 
     public Long getId() {
