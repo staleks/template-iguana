@@ -72,7 +72,7 @@ public class User {
         return email;
     }
 
-    public void setEmail(finalString email) {
+    public void setEmail(final String email) {
         this.email = email;
     }
 
@@ -80,7 +80,7 @@ public class User {
         return username;
     }
 
-    public void setUsername(finalString username) {
+    public void setUsername(final String username) {
         this.username = username;
     }
 
