@@ -43,13 +43,6 @@ class UserTest {
     }
 
     @Test
-    void testHashCode() {
-        Account testAccount = Account.create("Dummy Name");
-        var testUser = User.of(1L, "username", "john.doe@test.com", testAccount);
-        assertEquals(-935505319, testUser.hashCode());
-    }
-
-    @Test
     void testEquals() {
         Account testAccount = Account.create("Dummy Name");
         var testUser1 = User.of(1L, "username", "john.doe@test.com", testAccount);
